@@ -1,0 +1,10 @@
+{% extends "app/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<div><h1> El registro fue cargado con exito</h1></div>
+<button href="{% url 'personaFormulario' %}"> Volver al inicio</button>
+
+{% endblock %}

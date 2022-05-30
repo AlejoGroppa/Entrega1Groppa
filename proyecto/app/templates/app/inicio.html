@@ -1,0 +1,101 @@
+{% extends "app/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+
+    <h3>Podes buscar una persona:</h3>
+
+    <form action="/app/buscarPersona/" method="GET">
+
+        <input type="char" name="nombre" id="nombre" placeholder="Nombre">
+
+        <input type="submit" value="Buscar">
+
+
+
+
+    </form>
+
+    
+
+    {% if personas %}
+
+    <p>Estamos buscando el: {{nombre}}</p>
+
+    <ul>
+	{% for persona in personas %}
+		<li> {{persona.nombre}} </li>
+		<li> {{persona.edad}} </li>
+        <li> {{persona.mail}} </li>
+        <li> {{persona.comentario}} </li>
+	{% endfor %}
+
+    </ul>
+
+    {% endif %}
+
+    <h3>Podes buscar un producto por numero de serie:</h3>
+
+    <form action="/app/buscarProducto/" method="GET">
+
+        <input type="int" name="numero_serie" id="numero_serie" placeholder="Numero de serie">
+
+        <input type="submit" value="Buscar">
+
+
+
+
+    </form>
+
+    
+
+    {% if productos %}
+
+    <p>Estamos buscando el: {{numero_serie}}</p>
+
+    <ul>
+	{% for producto in productos %}
+	    <li> {{producto.nombre}} </li>	
+        <li> {{producto.numero_serie}} </li>
+		<li> {{producto.nui}} </li>
+        
+	{% endfor %}
+
+    </ul>
+
+    {% endif %}
+
+    <h3>Podes buscar una venta por su numero de pedido:</h3>
+
+    <form action="/app/buscarVenta/" method="GET">
+
+        <input type="int" name="numero_pedido" id="numero_pedido" placeholder="Numero de pedido">
+
+        <input type="submit" value="Buscar">
+
+
+
+
+    </form>
+
+    
+
+    {% if ventas %}
+
+    <p>Estamos buscando el: {{numero_pedido}}</p>
+
+    <ul>
+	{% for venta in ventas %}
+		<li> {{venta.nombre_comprador}} </li>
+		<li> {{venta.mail_comprador}} </li>
+        <li> {{venta.numero_pedido}} </li>
+	{% endfor %}
+
+    </ul>
+
+    {% endif %}
+
+
+{% endblock %}
